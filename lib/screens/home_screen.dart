@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import './news_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -8,9 +11,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    PlaceholderWidget(Colors.white),
+    NewsScreen(),
     PlaceholderWidget(Colors.deepOrange),
-    PlaceholderWidget(Colors.green)
+    PlaceholderWidget(Colors.green),
+    PlaceholderWidget(Colors.blue)
   ];
 
   @override
@@ -22,20 +26,26 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.amber,
+        unselectedItemColor: Colors.blue[600],
         onTap: _onTabTapped,
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: FaIcon(FontAwesomeIcons.home),
             title: Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
-            title: Text('Messages'),
+            icon: FaIcon(FontAwesomeIcons.users),
+            title: Text('Team'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Profile'),
+            icon: FaIcon(FontAwesomeIcons.trophy),
+            title: Text('Classifica'),
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.calendar),
+            title: Text('Calendario'),
           ),
         ],
       ),
