@@ -23,6 +23,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         leading: Icon(Icons.menu),
         title: Text('PGS Corticella Calcio'),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.person,
+              color: Colors.white,
+            ),
+            onPressed: null,
+          ),
+        ],
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

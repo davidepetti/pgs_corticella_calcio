@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 
 class NewsContainer extends StatelessWidget {
-  final String imageUrl;
+  final String imageURL;
   final String title;
   final DateTime pubDate;
 
-  NewsContainer({this.imageUrl, this.title, this.pubDate});
+  NewsContainer({@required this.imageURL, @required this.title, this.pubDate});
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +17,12 @@ class NewsContainer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           SizedBox(
-            height: 160,
+            height: 250,
             child: Stack(
               children: [
                 Positioned.fill(
                   child: Image.asset(
-                    'images/pgs.jpg',
+                    imageURL,
                     fit: BoxFit.cover,
                     alignment: Alignment.center,
                   ),
@@ -31,11 +32,11 @@ class NewsContainer extends StatelessWidget {
                   left: 16,
                   right: 16,
                   child: Text(
-                    'I nostri eroi riescono a strappare la vittoria alla prima in classifica superandola di fatto, grande prestazione!',
+                    title,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 25,
                     ),
                   ),
                 ),
@@ -43,12 +44,12 @@ class NewsContainer extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 40,
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(color: Colors.blue[200]),
               child: Padding(
-                padding: const EdgeInsets.all(2.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Row(
                   children: <Widget>[
                     FaIcon(
@@ -58,7 +59,7 @@ class NewsContainer extends StatelessWidget {
                     SizedBox(
                       width: 5,
                     ),
-                    Text(DateTime.now().toUtc().toString()),
+                    Text(DateFormat('dd/MM/yy HH:mm').format(DateTime.now())),
                   ],
                 ),
               ),
